@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="mx-auto max-w-5xl px-12 py-16">
       <header className="mb-20">
-        <img src="/aeros-logo.png" alt="AerOS" className="mb-12 h-12" />
+        <img src="/aeros-logo.png" alt="AerOS" className="mb-12 h-36" />
         <h1 className="mb-4 text-5xl font-medium tracking-tight text-fg">
           The private OS for your business.
         </h1>
