@@ -34,6 +34,22 @@
         }
       ],
       "meta": { "version": "0.1.0", "stability": "draft" }
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Aerodeck Card container with header, title, description, content, and footer subcomponents. Three variants (default, elevated, interactive). Use to group related content into a bounded surface. Always compose with subcomponents — Card alone is just a styled container. Use 'interactive' variant for clickable cards (lifts to surface-elevated on hover/focus).",
+      "categories": ["layout", "data-display"],
+      "registryDependencies": ["@aerodeck/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
+        }
+      ],
+      "meta": { "version": "0.1.0", "stability": "draft" }
     }
   ]
 }

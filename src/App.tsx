@@ -1,4 +1,12 @@
 import { Button } from "./components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./components/ui/card";
 
 function Swatch({ name, hex }: { name: string; hex: string }) {
   return (
@@ -82,15 +90,71 @@ function App() {
       </section>
 
       <section className="mb-20">
-        <SectionHeading>Sample surface</SectionHeading>
-        <div className="max-w-md rounded-2xl border border-border bg-surface p-8">
-          <div className="mb-2 text-xs uppercase tracking-wider text-aeros-cyan">
-            Connect
-          </div>
-          <h3 className="mb-2 text-2xl font-medium">Unify your data</h3>
-          <p className="text-fg-muted">
-            Transparent and verifiable. Your business in one room.
-          </p>
+        <SectionHeading>Card — default</SectionHeading>
+        <Card className="max-w-md">
+          <CardHeader>
+            <div className="text-xs uppercase tracking-wider text-aeros-cyan">
+              Connect
+            </div>
+            <CardTitle>Unify your data</CardTitle>
+            <CardDescription>
+              Transparent and verifiable. Your business in one room.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-fg-muted">
+              AEROS pulls every data source you already use into one
+              private surface, so you can ask one question and get one
+              answer.
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Button>Connect a source</Button>
+            <Button variant="ghost">Learn more</Button>
+          </CardFooter>
+        </Card>
+      </section>
+
+      <section className="mb-20">
+        <SectionHeading>Card — variants</SectionHeading>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <Card variant="default">
+            <CardHeader>
+              <CardTitle>Default</CardTitle>
+              <CardDescription>Sits on the page background.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-fg-muted">
+                The standard card. Use for most grouped content.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card variant="elevated">
+            <CardHeader>
+              <CardTitle>Elevated</CardTitle>
+              <CardDescription>One step brighter.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-fg-muted">
+                For popovers, modals, and content that should feel
+                lifted off the page.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card variant="interactive">
+            <CardHeader>
+              <CardTitle>Interactive</CardTitle>
+              <CardDescription>Hover to feel it.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-fg-muted">
+                For clickable cards. Lifts to elevated on hover and
+                keyboard focus.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
