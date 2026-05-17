@@ -23,7 +23,7 @@ const buttonVariants = cva(
         ghost:
           "bg-transparent text-fg hover:bg-surface-elevated active:bg-surface",
         destructive:
-          "bg-feedback-error text-fg hover:opacity-90 active:brightness-90",
+          "bg-feedback-error text-fg hover:opacity-90 active:brightness-[.8]",
       },
       size: {
         sm: "h-8 px-3 text-sm",
