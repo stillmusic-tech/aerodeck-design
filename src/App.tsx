@@ -7,6 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "./components/ui/card";
+import { Input } from "./components/ui/input";
+import { FieldHint, Label } from "./components/ui/label";
 
 function Swatch({ name, hex }: { name: string; hex: string }) {
   return (
@@ -156,6 +158,107 @@ function App() {
             </CardContent>
           </Card>
         </div>
+      </section>
+
+      <section className="mb-20">
+        <SectionHeading>Input + Label — sizes</SectionHeading>
+        <div className="grid max-w-md gap-6">
+          <div className="grid gap-2">
+            <Label htmlFor="input-sm">Small</Label>
+            <Input id="input-sm" inputSize="sm" placeholder="Small input" />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="input-md">Medium</Label>
+            <Input id="input-md" placeholder="Medium input" />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="input-lg">Large</Label>
+            <Input id="input-lg" inputSize="lg" placeholder="Large input" />
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-20">
+        <SectionHeading>Input + Label — states</SectionHeading>
+        <div className="grid max-w-md gap-6">
+          <div className="grid gap-2">
+            <Label htmlFor="input-default" required>
+              Email
+            </Label>
+            <Input
+              id="input-default"
+              type="email"
+              placeholder="you@aerodeck.ai"
+            />
+            <FieldHint>We will never share this with anyone.</FieldHint>
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="input-filled">Workspace</Label>
+            <Input id="input-filled" defaultValue="Aerodeck HQ" />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="input-disabled">API key (read-only)</Label>
+            <Input
+              id="input-disabled"
+              defaultValue="sk_live_••••••••••••••••"
+              disabled
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="input-error" required>
+              Domain
+            </Label>
+            <Input
+              id="input-error"
+              defaultValue="not a domain"
+              aria-invalid="true"
+              aria-describedby="input-error-msg"
+            />
+            <FieldHint id="input-error-msg" variant="error">
+              Enter a valid domain, e.g. aerodeck.ai
+            </FieldHint>
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-20">
+        <SectionHeading>Sign-in form (composition)</SectionHeading>
+        <Card className="max-w-md">
+          <CardHeader>
+            <CardTitle>Sign in to AEROS</CardTitle>
+            <CardDescription>
+              Private OS. Your data stays on your hardware.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="signin-email" required>
+                  Email
+                </Label>
+                <Input
+                  id="signin-email"
+                  type="email"
+                  placeholder="you@aerodeck.ai"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="signin-password" required>
+                  Password
+                </Label>
+                <Input
+                  id="signin-password"
+                  type="password"
+                  placeholder="••••••••"
+                />
+              </div>
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button>Sign in</Button>
+            <Button variant="ghost">Forgot password</Button>
+          </CardFooter>
+        </Card>
       </section>
 
       <section className="mb-20">

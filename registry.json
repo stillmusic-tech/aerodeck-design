@@ -50,6 +50,39 @@
         }
       ],
       "meta": { "version": "0.1.0", "stability": "draft" }
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Aerodeck text input. Three sizes (sm, md, lg) matching Button for vertical rhythm in form rows. Built-in states: default, hover, focus (cyan ring), disabled, error (set aria-invalid={true} to trigger). Accepts every native input type via type prop. Always pair with a Label and an htmlFor association for accessibility.",
+      "categories": ["form", "input"],
+      "registryDependencies": ["@aerodeck/cn"],
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "src/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ],
+      "meta": { "version": "0.1.0", "stability": "draft" }
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Aerodeck form label and optional FieldHint helper. Label supports a required prop that appends a red asterisk. FieldHint renders below an Input with two variants (hint, error) for help text or validation messages. Always set htmlFor on Label to the Input's id.",
+      "categories": ["form", "input"],
+      "registryDependencies": ["@aerodeck/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label.tsx"
+        }
+      ],
+      "meta": { "version": "0.1.0", "stability": "draft" }
     }
   ]
 }
