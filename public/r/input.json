@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "title": "Input",
+  "description": "Aerodeck text input. Three sizes (sm, md, lg) matching Button for vertical rhythm in form rows. Built-in states: default, hover, focus (cyan ring), disabled, error (set aria-invalid={true} to trigger). Accepts every native input type via type prop. Always pair with a Label and an htmlFor association for accessibility.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@aerodeck/cn"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/input.tsx",
+      "content": "import * as React from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"../../lib/cn\";\n\nconst inputVariants = cva(\n  [\n    \"flex w-full rounded-lg border bg-surface text-fg\",\n    \"transition-colors duration-200 ease-interaction\",\n    \"placeholder:text-fg-dim\",\n    \"border-border\",\n    \"hover:border-fg-dim\",\n    \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:border-focus-ring\",\n    \"disabled:opacity-50 disabled:pointer-events-none\",\n    \"aria-invalid:border-feedback-error aria-invalid:focus-visible:ring-feedback-error\",\n    \"file:border-0 file:bg-transparent file:text-sm file:font-medium\",\n  ],\n  {\n    variants: {\n      inputSize: {\n        sm: \"h-8 px-3 text-sm\",\n        md: \"h-10 px-3 text-base\",\n        lg: \"h-12 px-4 text-base\",\n      },\n    },\n    defaultVariants: { inputSize: \"md\" },\n  },\n);\n\ntype InputBaseProps = Omit<\n  React.InputHTMLAttributes<HTMLInputElement>,\n  \"size\"\n>;\n\nexport interface InputProps\n  extends InputBaseProps,\n    VariantProps<typeof inputVariants> {}\n\nexport const Input = React.forwardRef<HTMLInputElement, InputProps>(\n  ({ className, inputSize, type = \"text\", ...props }, ref) => {\n    return (\n      <input\n        ref={ref}\n        type={type}\n        className={cn(inputVariants({ inputSize }), className)}\n        {...props}\n      />\n    );\n  },\n);\nInput.displayName = \"Input\";\n",
+      "type": "registry:ui",
+      "target": "components/ui/input.tsx"
+    }
+  ],
+  "meta": {
+    "version": "0.1.0",
+    "stability": "draft"
+  },
+  "categories": [
+    "form",
+    "input"
+  ],
+  "type": "registry:ui"
+}

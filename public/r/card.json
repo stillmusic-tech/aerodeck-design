@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "title": "Card",
+  "description": "Aerodeck Card container with header, title, description, content, and footer subcomponents. Three variants (default, elevated, interactive). Use to group related content into a bounded surface. Always compose with subcomponents — Card alone is just a styled container. Use 'interactive' variant for clickable cards (lifts to surface-elevated on hover/focus).",
+  "registryDependencies": [
+    "@aerodeck/cn"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/card.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\ntype DivProps = React.HTMLAttributes<HTMLDivElement>;\ntype HeadingProps = React.HTMLAttributes<HTMLHeadingElement>;\ntype ParagraphProps = React.HTMLAttributes<HTMLParagraphElement>;\n\nexport type CardVariant = \"default\" | \"elevated\" | \"interactive\";\n\ninterface CardProps extends DivProps {\n  variant?: CardVariant;\n}\n\nconst variantClasses: Record<CardVariant, string> = {\n  default: \"bg-surface\",\n  elevated: \"bg-surface-elevated\",\n  interactive:\n    \"bg-surface cursor-pointer transition-colors duration-200 ease-interaction hover:bg-surface-elevated focus-within:bg-surface-elevated\",\n};\n\nexport const Card = React.forwardRef<HTMLDivElement, CardProps>(\n  ({ className, variant = \"default\", ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\n        \"rounded-2xl border border-border\",\n        variantClasses[variant],\n        className,\n      )}\n      {...props}\n    />\n  ),\n);\nCard.displayName = \"Card\";\n\nexport const CardHeader = React.forwardRef<HTMLDivElement, DivProps>(\n  ({ className, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\"flex flex-col gap-1.5 p-8 pb-4\", className)}\n      {...props}\n    />\n  ),\n);\nCardHeader.displayName = \"CardHeader\";\n\nexport const CardTitle = React.forwardRef<HTMLHeadingElement, HeadingProps>(\n  ({ className, ...props }, ref) => (\n    <h3\n      ref={ref}\n      className={cn(\"text-2xl font-medium leading-tight text-fg\", className)}\n      {...props}\n    />\n  ),\n);\nCardTitle.displayName = \"CardTitle\";\n\nexport const CardDescription = React.forwardRef<\n  HTMLParagraphElement,\n  ParagraphProps\n>(({ className, ...props }, ref) => (\n  <p\n    ref={ref}\n    className={cn(\"text-sm leading-relaxed text-fg-muted\", className)}\n    {...props}\n  />\n));\nCardDescription.displayName = \"CardDescription\";\n\nexport const CardContent = React.forwardRef<HTMLDivElement, DivProps>(\n  ({ className, ...props }, ref) => (\n    <div ref={ref} className={cn(\"px-8 pb-8\", className)} {...props} />\n  ),\n);\nCardContent.displayName = \"CardContent\";\n\nexport const CardFooter = React.forwardRef<HTMLDivElement, DivProps>(\n  ({ className, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\"flex items-center gap-2 px-8 pb-8 pt-4\", className)}\n      {...props}\n    />\n  ),\n);\nCardFooter.displayName = \"CardFooter\";\n",
+      "type": "registry:ui",
+      "target": "components/ui/card.tsx"
+    }
+  ],
+  "meta": {
+    "version": "0.1.0",
+    "stability": "draft"
+  },
+  "categories": [
+    "layout",
+    "data-display"
+  ],
+  "type": "registry:ui"
+}

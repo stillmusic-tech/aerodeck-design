@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "title": "Label",
+  "description": "Aerodeck form label and optional FieldHint helper. Label supports a required prop that appends a red asterisk. FieldHint renders below an Input with two variants (hint, error) for help text or validation messages. Always set htmlFor on Label to the Input's id.",
+  "registryDependencies": [
+    "@aerodeck/cn"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/label.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../../lib/cn\";\n\ninterface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {\n  required?: boolean;\n}\n\nexport const Label = React.forwardRef<HTMLLabelElement, LabelProps>(\n  ({ className, required, children, ...props }, ref) => (\n    <label\n      ref={ref}\n      className={cn(\n        \"text-sm font-medium leading-none text-fg select-none\",\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n      {required ? (\n        <span aria-hidden=\"true\" className=\"ml-0.5 text-feedback-error\">\n          *\n        </span>\n      ) : null}\n    </label>\n  ),\n);\nLabel.displayName = \"Label\";\n\ninterface FieldHintProps extends React.HTMLAttributes<HTMLParagraphElement> {\n  variant?: \"hint\" | \"error\";\n}\n\nexport const FieldHint = React.forwardRef<HTMLParagraphElement, FieldHintProps>(\n  ({ className, variant = \"hint\", ...props }, ref) => (\n    <p\n      ref={ref}\n      className={cn(\n        \"text-sm leading-relaxed\",\n        variant === \"hint\" ? \"text-fg-dim\" : \"text-feedback-error\",\n        className,\n      )}\n      {...props}\n    />\n  ),\n);\nFieldHint.displayName = \"FieldHint\";\n",
+      "type": "registry:ui",
+      "target": "components/ui/label.tsx"
+    }
+  ],
+  "meta": {
+    "version": "0.1.0",
+    "stability": "draft"
+  },
+  "categories": [
+    "form",
+    "input"
+  ],
+  "type": "registry:ui"
+}

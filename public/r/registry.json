@@ -1,0 +1,88 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "aerodeck",
+  "homepage": "https://aerodeck.ai",
+  "items": [
+    {
+      "name": "cn",
+      "type": "registry:lib",
+      "title": "cn (className utility)",
+      "description": "Tiny helper that merges Tailwind classes safely. Combines clsx and tailwind-merge. Required dependency for every Aerodeck UI component.",
+      "files": [
+        {
+          "path": "src/lib/cn.ts",
+          "type": "registry:lib",
+          "target": "lib/cn.ts"
+        }
+      ],
+      "dependencies": ["clsx", "tailwind-merge"],
+      "meta": { "version": "0.1.0", "stability": "stable" }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Aerodeck Button. Four variants (primary, secondary, ghost, destructive) and three sizes (sm, md, lg). Includes all six microstates by default: default, hover, focus, active, disabled, loading. Use for any interactive action. Do not use for navigation links — use the Link primitive instead.",
+      "categories": ["form", "action"],
+      "registryDependencies": ["@aerodeck/cn"],
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ],
+      "meta": { "version": "0.1.0", "stability": "draft" }
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Aerodeck Card container with header, title, description, content, and footer subcomponents. Three variants (default, elevated, interactive). Use to group related content into a bounded surface. Always compose with subcomponents — Card alone is just a styled container. Use 'interactive' variant for clickable cards (lifts to surface-elevated on hover/focus).",
+      "categories": ["layout", "data-display"],
+      "registryDependencies": ["@aerodeck/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
+        }
+      ],
+      "meta": { "version": "0.1.0", "stability": "draft" }
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Aerodeck text input. Three sizes (sm, md, lg) matching Button for vertical rhythm in form rows. Built-in states: default, hover, focus (cyan ring), disabled, error (set aria-invalid={true} to trigger). Accepts every native input type via type prop. Always pair with a Label and an htmlFor association for accessibility.",
+      "categories": ["form", "input"],
+      "registryDependencies": ["@aerodeck/cn"],
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "src/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ],
+      "meta": { "version": "0.1.0", "stability": "draft" }
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Aerodeck form label and optional FieldHint helper. Label supports a required prop that appends a red asterisk. FieldHint renders below an Input with two variants (hint, error) for help text or validation messages. Always set htmlFor on Label to the Input's id.",
+      "categories": ["form", "input"],
+      "registryDependencies": ["@aerodeck/cn"],
+      "files": [
+        {
+          "path": "src/components/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label.tsx"
+        }
+      ],
+      "meta": { "version": "0.1.0", "stability": "draft" }
+    }
+  ]
+}

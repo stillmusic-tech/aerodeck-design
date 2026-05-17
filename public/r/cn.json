@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cn",
+  "title": "cn (className utility)",
+  "description": "Tiny helper that merges Tailwind classes safely. Combines clsx and tailwind-merge. Required dependency for every Aerodeck UI component.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "src/lib/cn.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": "lib/cn.ts"
+    }
+  ],
+  "meta": {
+    "version": "0.1.0",
+    "stability": "stable"
+  },
+  "type": "registry:lib"
+}
