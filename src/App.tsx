@@ -95,7 +95,7 @@ function App() {
         <SectionHeading>Card — default</SectionHeading>
         <Card className="max-w-md">
           <CardHeader>
-            <div className="text-xs uppercase tracking-wider text-aeros-cyan">
+            <div className="text-xs uppercase tracking-wider text-action-primary">
               Connect
             </div>
             <CardTitle>Unify your data</CardTitle>

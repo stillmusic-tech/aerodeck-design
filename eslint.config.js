@@ -4,9 +4,10 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
+import aerodeck from './eslint-rules/aerodeck.js'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'public/r']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -17,6 +18,13 @@ export default defineConfig([
     ],
     languageOptions: {
       globals: globals.browser,
+    },
+    plugins: {
+      aerodeck,
+    },
+    rules: {
+      'aerodeck/prefer-semantic-classes': 'error',
+      'aerodeck/no-arbitrary-spacing': 'error',
     },
   },
 ])
