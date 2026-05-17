@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "aerodeck",
+  "homepage": "https://aerodeck.ai",
+  "items": [
+    {
+      "name": "cn",
+      "type": "registry:lib",
+      "title": "cn (className utility)",
+      "description": "Tiny helper that merges Tailwind classes safely. Combines clsx and tailwind-merge. Required dependency for every Aerodeck UI component.",
+      "files": [
+        {
+          "path": "src/lib/cn.ts",
+          "type": "registry:lib",
+          "target": "lib/cn.ts"
+        }
+      ],
+      "dependencies": ["clsx", "tailwind-merge"],
+      "meta": { "version": "0.1.0", "stability": "stable" }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Aerodeck Button. Four variants (primary, secondary, ghost, destructive) and three sizes (sm, md, lg). Includes all six microstates by default: default, hover, focus, active, disabled, loading. Use for any interactive action. Do not use for navigation links — use the Link primitive instead.",
+      "categories": ["form", "action"],
+      "registryDependencies": ["@aerodeck/cn"],
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ],
+      "meta": { "version": "0.1.0", "stability": "draft" }
+    }
+  ]
+}

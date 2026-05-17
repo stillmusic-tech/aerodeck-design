@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Aerodeck design tokens
+   Three-tier: primitives → semantic → (component, per-component)
+   Source of truth: Aerodeck/Branding/Style guide.md (vault)
+   ============================================================ */
+
+@theme {
+  /* Nuke Tailwind's default colour palette so agents cannot
+     emit off-brand utilities like bg-blue-500 and have them compile. */
+  --color-*: initial;
+
+  /* === PRIMITIVES ============================================
+     Raw values. No intent. Never reference these directly from
+     components — always go through the semantic layer below. */
+
+  /* Brand rainbow (sampled from the logo, four-stripe Apple-trim) */
+  --color-aeros-red: #FA1E00;
+  --color-aeros-yellow: #FADC00;
+  --color-aeros-green: #28F082;
+  --color-aeros-cyan: #28BED2;
+
+  /* Apple-style neutral ladder, dark-mode tuned.
+     50 = lightest text, 900 = deepest surface. */
+  --color-neutral-50: #F2F2F7;
+  --color-neutral-100: #AEAEB2;
+  --color-neutral-200: #8E8E93;
+  --color-neutral-300: #48484A;
+  --color-neutral-400: #3F3F41;
+  --color-neutral-500: #353537;
+  --color-neutral-600: #2A2A2A;
+
+  /* === SEMANTIC ==============================================
+     Intent tokens. Components reference these.
+     Refactors happen here without touching components. */
+
+  /* Surfaces */
+  --color-bg: var(--color-neutral-600);
+  --color-surface: var(--color-neutral-500);
+  --color-surface-elevated: var(--color-neutral-400);
+  --color-border: var(--color-neutral-300);
+
+  /* Foreground */
+  --color-fg: var(--color-neutral-50);
+  --color-fg-muted: var(--color-neutral-100);
+  --color-fg-dim: var(--color-neutral-200);
+
+  /* Action — Aeros cyan is the brand CTA colour */
+  --color-action-primary: var(--color-aeros-cyan);
+  --color-action-primary-fg: var(--color-neutral-600);
+  --color-action-primary-hover: #4ED2E4;
+
+  /* Feedback */
+  --color-feedback-error: var(--color-aeros-red);
+  --color-feedback-success: var(--color-aeros-green);
+  --color-feedback-warning: var(--color-aeros-yellow);
+
+  /* Focus ring (always use brand cyan for keyboard focus) */
+  --color-focus-ring: var(--color-aeros-cyan);
+
+  /* === TYPOGRAPHY ============================================ */
+  --font-sans: "Lexend", system-ui, sans-serif;
+
+  /* === MOTION ================================================
+     Two curves, by design. See research note:
+     [[Modern Motion and Scroll-Driven Interaction for React 2026]] */
+  --ease-entrance: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-interaction: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Page defaults */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
