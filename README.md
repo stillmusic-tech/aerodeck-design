@@ -20,20 +20,50 @@ npm run dev
 
 Default port `5173` (or `3020` via the project's launch.json). Calibration page at `http://localhost:<port>/`.
 
-## Hosting (current)
+## Hosting and install
 
-GitHub raw, public. Once components are stable, consumers can install via:
+GitHub raw, public. Consumers install with:
 
 ```bash
 npx shadcn add @aerodeck/<component-name>
 ```
 
-This requires:
+The consumer's `components.json` must register the `@aerodeck` namespace:
 
-1. The consuming project's `components.json` registers the `@aerodeck` namespace.
-2. A `shadcn build` step generates `public/r/<name>.json` files (deferred — not yet wired).
+```json
+{
+  "registries": {
+    "@aerodeck": "https://raw.githubusercontent.com/stillmusic-tech/aerodeck-design/main/public/r/{name}.json"
+  }
+}
+```
 
-Until the build step is wired, the registry is structurally correct but installs are manual (copy the source file). Lean first-pass intentionally.
+Building the registry locally:
+
+```bash
+npm run build:registry
+```
+
+This regenerates `public/r/<name>.json` files with each component's source embedded. Commit and push to make the change live for consumers. Verified end-to-end against a fresh Vite + TS consumer 2026-05-17.
+
+## Linting
+
+Two custom ESLint rules in `eslint-rules/aerodeck.js` enforce the token system:
+
+- `aerodeck/prefer-semantic-classes` — bans direct use of primitive color tokens (`bg-aeros-cyan`, `text-neutral-600`) in component code. Use the semantic layer (`bg-action-primary`, `text-fg`) instead.
+- `aerodeck/no-arbitrary-spacing` — bans arbitrary spacing utilities (`p-[12px]`, `gap-[8px]`). Use the scale or extend `@theme`.
+
+Both rules walk through variants, so `hover:p-[12px]` and `data-[state=open]:bg-aeros-red` are still caught.
+
+Run with `npm run lint`.
+
+## Icons
+
+`lucide-react` is the default for UI affordances (chevrons, X, search, check, info). Tree-shakeable, MIT, shadcn-standard so consumers usually have it already.
+
+Bespoke SVGs are reserved for brand marks (the rainbow A) and AerOS-specific glyphs that need brand personality. Don't reach for bespoke when lucide has a fit.
+
+`lucide-react` is not installed yet — the first component that needs an icon adds it as a `dependency` in its registry manifest.
 
 ## Reference
 
