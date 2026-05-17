@@ -17,11 +17,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-surface-elevated text-fg border border-transparent hover:border-action-primary active:bg-surface",
+          "bg-surface-elevated text-fg border-2 border-transparent hover:border-action-primary active:bg-surface",
         secondary:
-          "bg-surface text-fg border border-border hover:bg-surface-elevated",
-        ghost: "bg-transparent text-fg hover:bg-surface-elevated",
-        destructive: "bg-feedback-error text-fg hover:opacity-90",
+          "bg-surface text-fg border border-border hover:bg-surface-elevated active:bg-bg",
+        ghost:
+          "bg-transparent text-fg hover:bg-surface-elevated active:bg-surface",
+        destructive:
+          "bg-feedback-error text-fg hover:opacity-90 active:brightness-90",
       },
       size: {
         sm: "h-8 px-3 text-sm",
