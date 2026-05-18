@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input",
   "title": "Input",
-  "description": "Aerodeck text input. Three sizes (sm, md, lg) matching Button for vertical rhythm in form rows. Built-in states: default, hover, focus (cyan ring), disabled, error (set aria-invalid={true} to trigger). Accepts every native input type via type prop. Always pair with a Label and an htmlFor association for accessibility.",
+  "description": "Aerodeck text input. Three sizes (sm, md, lg) matching Button for vertical rhythm in form rows. Built-in states: default, hover, focus (cyan ring), disabled, error (set aria-invalid={true} to trigger). Accepts every native input type via type prop. Always pair with a Label and an htmlFor association for accessibility. Do not use for multi-line text — use Textarea. Do not use for selecting from a list — use Select or Combobox. Do not use for binary state — use Switch or Checkbox.",
   "dependencies": [
     "class-variance-authority"
   ],

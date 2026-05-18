@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "label",
   "title": "Label",
-  "description": "Aerodeck form label and optional FieldHint helper. Label supports a required prop that appends a red asterisk. FieldHint renders below an Input with two variants (hint, error) for help text or validation messages. Always set htmlFor on Label to the Input's id.",
+  "description": "Aerodeck form label and optional FieldHint helper. Label supports a required prop that appends a red asterisk. FieldHint renders below an Input with two variants (hint, error) for help text or validation messages. Always set htmlFor on Label to the Input's id. Do not use Label as a section heading — use a heading element (h1–h6). Do not use FieldHint for inline form-level errors — use a banner or toast at the form root.",
   "registryDependencies": [
     "@aerodeck/cn"
   ],

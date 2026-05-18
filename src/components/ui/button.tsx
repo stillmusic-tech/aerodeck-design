@@ -10,14 +10,14 @@ const buttonVariants = cva(
     "transition-all duration-200 ease-interaction",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
     "disabled:opacity-50 disabled:pointer-events-none",
-    "active:scale-95",
+    "active:scale-[0.97]",
     "cursor-pointer",
   ],
   {
     variants: {
       variant: {
         primary:
-          "bg-surface-elevated text-fg border-2 border-transparent hover:border-b-action-primary active:bg-surface",
+          "bg-fg text-bg hover:opacity-90 active:brightness-[.85]",
         secondary:
           "bg-surface text-fg border border-border hover:bg-surface-elevated active:bg-bg",
         ghost:

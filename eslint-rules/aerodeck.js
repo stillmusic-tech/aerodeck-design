@@ -11,10 +11,15 @@
  *     like p-[12px] or w-[400px]. Use the scale (p-4, w-full) or extend
  *     the theme.
  *
- * Both rules scan string literals and template chunks. Variants are
- * stripped so hover:p-[12px] and data-[state=open]:bg-aeros-cyan are
- * still caught. Disable per-line with the usual eslint-disable comment
- * when you have a documented escape-hatch reason.
+ *   - no-hardcoded-hex : ban inline hex colour codes (#fff, #abcdef,
+ *     #abcdef12). Colour belongs in @theme as OKLCH and is consumed
+ *     through semantic tokens. The only legitimate hex in the repo is
+ *     inside @theme itself, which ESLint does not lint.
+ *
+ * Rules scan string literals and template chunks. Variants are stripped
+ * so hover:p-[12px] and data-[state=open]:bg-aeros-cyan are still caught.
+ * Disable per-line with the usual eslint-disable comment when you have a
+ * documented escape-hatch reason.
  */
 
 const PRIMITIVE_RE =
@@ -22,6 +27,8 @@ const PRIMITIVE_RE =
 
 const ARBITRARY_SPACING_RE =
   /(?:^|:)(p|m|gap|space-[xy]|inset)(-[trblxyse])?-\[[^\]]+\]$/;
+
+const HEX_RE = /#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b/g;
 
 function eachToken(str, fn) {
   if (!str) return;
@@ -103,10 +110,45 @@ const noArbitrarySpacing = {
   },
 };
 
+const noHardcodedHex = {
+  meta: {
+    type: "problem",
+    docs: {
+      description:
+        "Disallow inline hex colour codes. Use semantic tokens declared in @theme.",
+    },
+    schema: [],
+    messages: {
+      hex: "Hardcoded hex colour '{{token}}' is off-limits. Declare it in @theme as OKLCH and consume via a semantic token (text-fg, bg-surface, etc.).",
+    },
+  },
+  create(context) {
+    function check(value, node) {
+      if (!value) return;
+      for (const m of value.matchAll(HEX_RE)) {
+        context.report({
+          node,
+          messageId: "hex",
+          data: { token: m[0] },
+        });
+      }
+    }
+    return {
+      Literal(node) {
+        if (typeof node.value === "string") check(node.value, node);
+      },
+      TemplateElement(node) {
+        check(node.value.cooked, node);
+      },
+    };
+  },
+};
+
 export default {
   meta: { name: "aerodeck", version: "0.1.0" },
   rules: {
     "prefer-semantic-classes": preferSemanticClasses,
     "no-arbitrary-spacing": noArbitrarySpacing,
+    "no-hardcoded-hex": noHardcodedHex,
   },
 };

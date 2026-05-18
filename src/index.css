@@ -15,21 +15,24 @@
      Raw values. No intent. Never reference these directly from
      components — always go through the semantic layer below. */
 
-  /* Brand rainbow (sampled from the logo, four-stripe Apple-trim) */
-  --color-aeros-red: #FA1E00;
-  --color-aeros-yellow: #FADC00;
-  --color-aeros-green: #28F082;
-  --color-aeros-cyan: #28BED2;
+  /* Brand rainbow (sampled from the logo, four-stripe Apple-trim).
+     OKLCH for perceptual uniformity and Display P3 access on supported
+     hardware. Values are 1:1 conversions from the original hex; tune
+     chroma here, not in components. */
+  --color-aeros-red: oklch(62.62% 0.247 30.61);
+  --color-aeros-yellow: oklch(89.21% 0.185 99.25);
+  --color-aeros-green: oklch(84.00% 0.212 152.22);
+  --color-aeros-cyan: oklch(73.66% 0.120 208.93);
 
   /* Apple-style neutral ladder, dark-mode tuned.
-     50 = lightest text, 900 = deepest surface. */
-  --color-neutral-50: #F2F2F7;
-  --color-neutral-100: #AEAEB2;
-  --color-neutral-200: #8E8E93;
-  --color-neutral-300: #48484A;
-  --color-neutral-400: #3F3F41;
-  --color-neutral-500: #353537;
-  --color-neutral-600: #2A2A2A;
+     50 = lightest text, 600 = deepest surface. */
+  --color-neutral-50: oklch(96.26% 0.007 286.27);
+  --color-neutral-100: oklch(75.20% 0.006 286.26);
+  --color-neutral-200: oklch(64.83% 0.007 286.19);
+  --color-neutral-300: oklch(40.24% 0.003 286.25);
+  --color-neutral-400: oklch(36.84% 0.003 286.23);
+  --color-neutral-500: oklch(32.97% 0.004 286.21);
+  --color-neutral-600: oklch(28.50% 0 0);
 
   /* === SEMANTIC ==============================================
      Intent tokens. Components reference these.
@@ -49,7 +52,7 @@
   /* Action — Aeros cyan is the brand CTA colour */
   --color-action-primary: var(--color-aeros-cyan);
   --color-action-primary-fg: var(--color-neutral-600);
-  --color-action-primary-hover: #4ED2E4;
+  --color-action-primary-hover: oklch(79.92% 0.115 207.90);
 
   /* Feedback */
   --color-feedback-error: var(--color-aeros-red);
@@ -63,10 +66,32 @@
   --font-sans: "Lexend", system-ui, sans-serif;
 
   /* === MOTION ================================================
-     Two curves, by design. See research note:
+     Two curves, three durations, three staggers — the entire
+     motion vocabulary. See research note:
      [[Modern Motion and Scroll-Driven Interaction for React 2026]] */
+
+  /* Easings */
   --ease-entrance: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-interaction: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Durations (use via Tailwind duration-* or direct var()) */
+  --duration-micro: 180ms;    /* hovers, presses */
+  --duration-short: 220ms;    /* dropdowns, popovers, toasts */
+  --duration-medium: 480ms;   /* hero reveals, section enters */
+  --duration-banner: 900ms;   /* full-bleed marketing moments */
+
+  /* Stagger scale (apply as animation-delay multiples or via JS) */
+  --stagger-tight: 40ms;      /* chars in SplitText */
+  --stagger-base: 80ms;       /* list items */
+  --stagger-loose: 120ms;     /* hero word-by-word */
+
+  /* Animations — declare every keyframe-driven utility we use, so
+     defaults can be nuked further without breaking components. */
+  --animate-spin: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* Page defaults */
@@ -77,6 +102,7 @@ body {
   background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

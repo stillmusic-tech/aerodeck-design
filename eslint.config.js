@@ -25,6 +25,7 @@ export default defineConfig([
     rules: {
       'aerodeck/prefer-semantic-classes': 'error',
       'aerodeck/no-arbitrary-spacing': 'error',
+      'aerodeck/no-hardcoded-hex': 'error',
     },
   },
 ])

@@ -55,7 +55,7 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "description": "Aerodeck text input. Three sizes (sm, md, lg) matching Button for vertical rhythm in form rows. Built-in states: default, hover, focus (cyan ring), disabled, error (set aria-invalid={true} to trigger). Accepts every native input type via type prop. Always pair with a Label and an htmlFor association for accessibility.",
+      "description": "Aerodeck text input. Three sizes (sm, md, lg) matching Button for vertical rhythm in form rows. Built-in states: default, hover, focus (cyan ring), disabled, error (set aria-invalid={true} to trigger). Accepts every native input type via type prop. Always pair with a Label and an htmlFor association for accessibility. Do not use for multi-line text — use Textarea. Do not use for selecting from a list — use Select or Combobox. Do not use for binary state — use Switch or Checkbox.",
       "categories": ["form", "input"],
       "registryDependencies": ["@aerodeck/cn"],
       "dependencies": ["class-variance-authority"],
@@ -72,7 +72,7 @@
       "name": "label",
       "type": "registry:ui",
       "title": "Label",
-      "description": "Aerodeck form label and optional FieldHint helper. Label supports a required prop that appends a red asterisk. FieldHint renders below an Input with two variants (hint, error) for help text or validation messages. Always set htmlFor on Label to the Input's id.",
+      "description": "Aerodeck form label and optional FieldHint helper. Label supports a required prop that appends a red asterisk. FieldHint renders below an Input with two variants (hint, error) for help text or validation messages. Always set htmlFor on Label to the Input's id. Do not use Label as a section heading — use a heading element (h1–h6). Do not use FieldHint for inline form-level errors — use a banner or toast at the form root.",
       "categories": ["form", "input"],
       "registryDependencies": ["@aerodeck/cn"],
       "files": [

@@ -10,16 +10,16 @@ import {
 import { Input } from "./components/ui/input";
 import { FieldHint, Label } from "./components/ui/label";
 
-function Swatch({ name, hex }: { name: string; hex: string }) {
+function Swatch({ name, token }: { name: string; token: string }) {
   return (
     <div className="flex flex-col gap-3">
       <div
         className="h-24 w-24 rounded-xl border border-border"
-        style={{ background: hex }}
+        style={{ background: `var(--color-${token})` }}
       />
       <div>
         <div className="text-sm text-fg">{name}</div>
-        <div className="font-mono text-xs text-fg-dim">{hex}</div>
+        <div className="font-mono text-xs text-fg-dim">--color-{token}</div>
       </div>
     </div>
   );
@@ -50,23 +50,23 @@ function App() {
       <section className="mb-20">
         <SectionHeading>Rainbow</SectionHeading>
         <div className="flex flex-wrap gap-6">
-          <Swatch name="Red" hex="#FA1E00" />
-          <Swatch name="Yellow" hex="#FADC00" />
-          <Swatch name="Green" hex="#28F082" />
-          <Swatch name="Cyan" hex="#28BED2" />
+          <Swatch name="Red" token="aeros-red" />
+          <Swatch name="Yellow" token="aeros-yellow" />
+          <Swatch name="Green" token="aeros-green" />
+          <Swatch name="Cyan" token="aeros-cyan" />
         </div>
       </section>
 
       <section className="mb-20">
         <SectionHeading>Neutrals (dark)</SectionHeading>
         <div className="flex flex-wrap gap-6">
-          <Swatch name="Background" hex="#2A2A2A" />
-          <Swatch name="Surface" hex="#353537" />
-          <Swatch name="Surface elevated" hex="#3F3F41" />
-          <Swatch name="Border" hex="#48484A" />
-          <Swatch name="Text dim" hex="#8E8E93" />
-          <Swatch name="Text muted" hex="#AEAEB2" />
-          <Swatch name="Text primary" hex="#F2F2F7" />
+          <Swatch name="Background" token="neutral-600" />
+          <Swatch name="Surface" token="neutral-500" />
+          <Swatch name="Surface elevated" token="neutral-400" />
+          <Swatch name="Border" token="neutral-300" />
+          <Swatch name="Text dim" token="neutral-200" />
+          <Swatch name="Text muted" token="neutral-100" />
+          <Swatch name="Text primary" token="neutral-50" />
         </div>
       </section>
 
